@@ -1,4 +1,3 @@
-/* Fundo estilo Matrix */
 body {
   margin: 0;
   padding: 0;
@@ -8,35 +7,19 @@ body {
   overflow-x: hidden;
 }
 
-.matrix-bg {
+#matrix {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
-  z-index: -1;
-  animation: matrix 10s linear infinite;
-}
-
-@keyframes matrix {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 1000px; }
+  z-index: -1; /* fica atrás do conteúdo */
 }
 
 header, section, footer {
   text-align: center;
   padding: 2rem;
-}
-
-h1, h2 {
-  color: #00ff00;
-}
-
-a {
-  color: #00ff00;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+  background: rgba(0,0,0,0.6); /* leve transparência pra destacar texto */
+  margin: 1rem;
+  border-radius: 8px;
 }
