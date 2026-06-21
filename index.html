@@ -1,42 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Rayder Luck</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="matrix-bg"></div>
+<canvas id="matrix"></canvas>
+<script>
+  const canvas = document.getElementById("matrix");
+  const ctx = canvas.getContext("2d");
 
-  <header>
-    <h1>Lucas Trindade (Rayder Luck)</h1>
-    <p>Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
-  </header>
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
 
-  <section id="status">
-    <h2>🚧 Site em construção 🚧</h2>
-    <p>Enquanto construo meu portfólio completo, você já pode explorar minhas qualificações e serviços.</p>
-  </section>
+  const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const fontSize = 14;
+  const columns = canvas.width / fontSize;
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <ul>
-      <li>Criação de sites modernos e responsivos</li>
-      <li>Aplicações web com React, Next.js e Node.js</li>
-      <li>Consultoria em Web3 e Blockchain</li>
-    </ul>
-  </section>
+  const drops = [];
+  for(let x = 0; x < columns; x++) {
+    drops[x] = 1;
+  }
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>📧 <a href="mailto:rayder.dev@gmail.com">rayder.dev@gmail.com</a></p>
-    <p>💻 <a href="https://github.com/RayderLuck" target="_blank">GitHub</a></p>
-    <p>🔗 <a href="https://linkedin.com/in/rayderluck" target="_blank">LinkedIn</a></p>
-  </section>
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  <footer>
-    <p>© 2026 - Portfólio de Lucas Trindade (Rayder Luck)</p>
-  </footer>
-</body>
-</html>
+    ctx.fillStyle = "#0F0"; // verde Matrix
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++) {
+      const text = letters[Math.floor(Math.random() * letters.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+
+  setInterval(draw, 33);
+</script>
