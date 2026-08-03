@@ -1,9 +1,9 @@
-/* --- Reset e Variáveis --- */
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --primary-color: #0F0;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --primary-color: #00ff66; /* Verde Matrix mais vivo */
+    --box-bg: rgba(5, 5, 5, 0.85); /* Preto bem escuro e transparente */
+    --border-color: rgba(0, 255, 102, 0.3);
 }
 
 * {
@@ -13,94 +13,134 @@
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: 'Courier New', Courier, monospace; /* Estilo mais hacker/dev */
     background-color: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     overflow-x: hidden;
+    padding: 20px;
 }
 
-/* --- Fundo Matrix (Sempre Atrás) --- */
+/* --- Fundo Matrix --- */
 #matrix {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Garante que fica atrás de tudo */
-    pointer-events: none; /* Faz o canvas ignorar cliques, focando nos botões */
+    z-index: -1;
+    pointer-events: none; /* Permite clicar através do canvas */
 }
 
-/* --- Container Principal --- */
-.container {
+/* --- Wrapper Geral --- */
+.wrapper {
     width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    text-align: center;
-    z-index: 1; /* Garante que fica na frente do Matrix */
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    margin-top: 40px;
 }
 
-/* --- Cabeçalho e Perfil --- */
+/* --- Perfil --- */
+.profile-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 .profile-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 5px;
-    text-shadow: 0 0 10px var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .profile-header .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
-    margin-bottom: 10px;
-    font-weight: bold;
+    margin: 5px 0;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
 }
 
 .profile-header .role {
-    font-size: 0.95rem;
-    opacity: 0.8;
-    margin-bottom: 30px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    letter-spacing: 1px;
 }
 
-/* --- Botões Sociais --- */
-.social-buttons {
+/* --- Caixa de Links (Dark Box) --- */
+.links-box {
+    background-color: var(--box-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px 20px;
+    width: 100%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px); /* Efeito vidro */
+}
+
+.links-box h2 {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: left;
+    opacity: 0.9;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 8px;
+}
+
+/* --- Lista de Botões --- */
+.link-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%;
+    gap: 12px;
 }
 
-.btn {
+.link-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+    gap: 15px;
+    background-color: rgba(20, 20, 20, 0.9);
     color: var(--text-color);
-    padding: 14px 20px;
-    border-radius: 30px;
-    border: 1px solid var(--primary-color);
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
-.btn:hover {
+.link-item i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    width: 25px;
+    text-align: center;
+}
+
+.link-item:hover {
     background-color: var(--primary-color);
     color: #000;
-    box-shadow: 0 0 20px var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
     transform: translateY(-2px);
+}
+
+.link-item:hover i {
+    color: #000;
 }
 
 /* --- Rodapé --- */
 .main-footer {
-    margin-top: 40px;
-    font-size: 0.85rem;
-    opacity: 0.6;
+    font-size: 0.75rem;
+    opacity: 0.5;
     z-index: 1;
+    margin-top: 20px;
+    letter-spacing: 1px;
 }
