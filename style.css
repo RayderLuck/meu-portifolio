@@ -1,79 +1,198 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Rayder Luck</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <canvas id="matrix"></canvas>
+/* --- Variáveis Globais e Reset --- */
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #0F0; /* Cor Matrix */
+    --alert-bg-color: rgba(255, 255, 0, 0.1); /* Fundo amarelo suave para alerta */
+    --card-bg-color: rgba(255, 255, 255, 0.05); /* Fundo escuro transparente para cartões */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --container-width: 1200px;
+}
 
-  <header>
-    <h1>Lucas Trindade (Rayder Luck)</h1>
-    <p>Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
-  </header>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  <section id="status">
-    <h2>🚧 Site em construção 🚧</h2>
-    <p>Enquanto construo meu portfólio completo, você já pode explorar minhas qualificações e serviços.</p>
-  </section>
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    padding-bottom: 60px; /* Espaço para o rodapé fixo */
+}
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <ul>
-      <li>Criação de sites modernos e responsivos</li>
-      <li>Aplicações web com React, Next.js e Node.js</li>
-      <li>Consultoria em Web3 e Blockchain</li>
-    </ul>
-  </section>
+/* --- Fundo Matrix --- */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Fica atrás de todo o conteúdo */
+}
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>📧 <a href="mailto:rayder.dev@gmail.com">rayder.dev@gmail.com</a></p>
-    <p>💻 <a href="https://github.com/RayderLuck" target="_blank">GitHub</a></p>
-    <p>🔗 <a href="https://linkedin.com/in/rayderluck" target="_blank">LinkedIn</a></p>
-  </section>
+/* --- Layout Helpers --- */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-  <footer>
-    <p>© 2026 - Portfólio de Lucas Trindade (Rayder Luck)</p>
-  </footer>
+/* --- Menu de Navegação (Responsivo) --- */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+    position: sticky; /* Fica fixo no topo ao rolar */
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--primary-color);
+}
 
-  <script>
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+.navbar .brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+}
 
-    const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
+.navbar .nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Cabeçalho Principal --- */
+.main-header {
+    text-align: center;
+    padding: 100px 0; /* Espaçamento grande para destaque */
+    background: radial-gradient(circle, rgba(15, 255, 15, 0.1) 0%, rgba(0,0,0,0) 70%);
+}
+
+.main-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* --- Conteúdo Principal --- */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Por padrão, uma coluna (mobile) */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* --- Cartões (Sections) --- */
+.card {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Seção de Alerta (Site em construção) --- */
+.card.alert {
+    background-color: var(--alert-bg-color);
+    border-color: yellow;
+    text-align: center;
+}
+
+/* --- Lista de Serviços --- */
+.services-list {
+    list-style: none;
+}
+
+.services-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.services-list li .material-icons {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* --- Rodapé --- */
+.main-footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    border-top: 1px solid var(--primary-color);
+}
+
+/* --- Responsividade: Telas Médias e Grandes (PC) --- */
+@media (min-width: 768px) {
+    .navbar .nav-links {
+        display: flex; /* Ocultar menu hambúrguer se tivéssemos um */
     }
 
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
+    .main-header {
+        padding: 150px 0;
     }
 
-    setInterval(draw, 33);
-  </script>
-</body>
-</html>
+    .main-header h1 {
+        font-size: 4rem;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr 1fr; /* Duas colunas no PC */
+    }
+
+    /* Ocupa toda a largura se houver apenas um cartão */
+    .main-content #status {
+        grid-column: span 2;
+    }
+}
+
+/* --- Pequenas correções de estilo para links --- */
+#contato p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+#contato p a:hover {
+    text-decoration: underline;
+}
