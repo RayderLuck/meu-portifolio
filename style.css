@@ -1,9 +1,9 @@
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --primary-color: #00ff66; /* Verde Matrix mais vivo */
-    --box-bg: rgba(5, 5, 5, 0.85); /* Preto bem escuro e transparente */
-    --border-color: rgba(0, 255, 102, 0.3);
+    --primary-color: #00ff66;
+    --box-bg: rgba(5, 5, 5, 0.88);
+    --border-color: rgba(0, 255, 102, 0.35);
 }
 
 * {
@@ -12,21 +12,25 @@
     padding: 0;
 }
 
-body {
-    font-family: 'Courier New', Courier, monospace; /* Estilo mais hacker/dev */
+html, body {
+    width: 100%;
+    min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
-    min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+}
+
+body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    overflow-x: hidden;
-    padding: 20px;
+    padding: 20px 15px;
 }
 
-/* --- Fundo Matrix --- */
+/* --- Fundo Matrix Perfeito para Mobile e PC --- */
 #matrix {
     position: fixed;
     top: 0;
@@ -34,43 +38,44 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    pointer-events: none; /* Permite clicar através do canvas */
+    pointer-events: none; /* Permite clicar através do canvas em qualquer tela */
 }
 
 /* --- Wrapper Geral --- */
 .wrapper {
     width: 100%;
-    max-width: 450px;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-top: 40px;
+    margin: auto 0; /* Centraliza verticalmente se houver espaço */
 }
 
 /* --- Perfil --- */
 .profile-header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .profile-header h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .profile-header .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--primary-color);
-    margin: 5px 0;
+    margin: 4px 0;
     text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
 }
 
 .profile-header .role {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     opacity: 0.7;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 /* --- Caixa de Links (Dark Box) --- */
@@ -78,16 +83,17 @@ body {
     background-color: var(--box-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 25px 20px;
+    padding: 20px 16px;
     width: 100%;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px); /* Efeito vidro */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari no iPhone */
 }
 
 .links-box h2 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: left;
     opacity: 0.9;
     border-left: 3px solid var(--primary-color);
@@ -99,28 +105,28 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .link-item {
     display: flex;
     align-items: center;
     gap: 15px;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: rgba(20, 20, 20, 0.95);
     color: var(--text-color);
-    padding: 14px 18px;
+    padding: 12px 16px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .link-item i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
-    width: 25px;
+    width: 20px;
     text-align: center;
 }
 
@@ -129,7 +135,6 @@ body {
     color: #000;
     border-color: var(--primary-color);
     box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
-    transform: translateY(-2px);
 }
 
 .link-item:hover i {
@@ -138,9 +143,10 @@ body {
 
 /* --- Rodapé --- */
 .main-footer {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     opacity: 0.5;
     z-index: 1;
-    margin-top: 20px;
+    margin-top: 15px;
     letter-spacing: 1px;
+    text-align: center;
 }
