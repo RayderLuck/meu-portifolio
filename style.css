@@ -1,12 +1,9 @@
-/* --- Variáveis Globais e Reset --- */
+/* --- Reset e Variáveis --- */
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --primary-color: #0F0; /* Cor Matrix */
-    --alert-bg-color: rgba(255, 255, 0, 0.1); /* Fundo amarelo suave para alerta */
-    --card-bg-color: rgba(255, 255, 255, 0.05); /* Fundo escuro transparente para cartões */
+    --primary-color: #0F0;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --container-width: 1200px;
 }
 
 * {
@@ -19,180 +16,91 @@ body {
     font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
-    overflow-x: hidden; /* Evita barra de rolagem horizontal */
-    padding-bottom: 60px; /* Espaço para o rodapé fixo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* --- Fundo Matrix --- */
+/* --- Fundo Matrix (Sempre Atrás) --- */
 #matrix {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Fica atrás de todo o conteúdo */
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Garante que fica atrás de tudo */
+    pointer-events: none; /* Faz o canvas ignorar cliques, focando nos botões */
 }
 
-/* --- Layout Helpers --- */
+/* --- Container Principal --- */
 .container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- Menu de Navegação (Responsivo) --- */
-.navbar {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 15px 0;
-    position: sticky; /* Fica fixo no topo ao rolar */
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--primary-color);
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar .brand {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.navbar .nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-links a:hover {
-    color: var(--primary-color);
-}
-
-/* --- Cabeçalho Principal --- */
-.main-header {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
     text-align: center;
-    padding: 100px 0; /* Espaçamento grande para destaque */
-    background: radial-gradient(circle, rgba(15, 255, 15, 0.1) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1; /* Garante que fica na frente do Matrix */
 }
 
-.main-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+/* --- Cabeçalho e Perfil --- */
+.profile-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
     text-shadow: 0 0 10px var(--primary-color);
 }
 
-.main-header p {
+.profile-header .subtitle {
     font-size: 1.2rem;
-    opacity: 0.8;
-}
-
-/* --- Conteúdo Principal --- */
-.main-content {
-    display: grid;
-    grid-template-columns: 1fr; /* Por padrão, uma coluna (mobile) */
-    gap: 30px;
-    margin-top: 30px;
-}
-
-/* --- Cartões (Sections) --- */
-.card {
-    background-color: var(--card-bg-color);
-    padding: 30px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
-}
-
-.card h2 {
     color: var(--primary-color);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-/* --- Seção de Alerta (Site em construção) --- */
-.card.alert {
-    background-color: var(--alert-bg-color);
-    border-color: yellow;
-    text-align: center;
+.profile-header .role {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 30px;
 }
 
-/* --- Lista de Serviços --- */
-.services-list {
-    list-style: none;
+/* --- Botões Sociais --- */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
-.services-list li {
+.btn {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--primary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
-.services-list li .material-icons {
-    color: var(--primary-color);
-    font-size: 1.5rem;
+.btn:hover {
+    background-color: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary-color);
+    transform: translateY(-2px);
 }
 
 /* --- Rodapé --- */
 .main-footer {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: var(--text-color);
-    text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 100;
-    border-top: 1px solid var(--primary-color);
-}
-
-/* --- Responsividade: Telas Médias e Grandes (PC) --- */
-@media (min-width: 768px) {
-    .navbar .nav-links {
-        display: flex; /* Ocultar menu hambúrguer se tivéssemos um */
-    }
-
-    .main-header {
-        padding: 150px 0;
-    }
-
-    .main-header h1 {
-        font-size: 4rem;
-    }
-
-    .main-content {
-        grid-template-columns: 1fr 1fr; /* Duas colunas no PC */
-    }
-
-    /* Ocupa toda a largura se houver apenas um cartão */
-    .main-content #status {
-        grid-column: span 2;
-    }
-}
-
-/* --- Pequenas correções de estilo para links --- */
-#contato p a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: text-decoration 0.3s ease;
-}
-
-#contato p a:hover {
-    text-decoration: underline;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    z-index: 1;
 }
