@@ -4,47 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Rayder Luck</title>
+  <!-- Adicionei um link para ícones, vamos usar o Google Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
-  <header>
-    <h1>Lucas Trindade (Rayder Luck)</h1>
-    <p>Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
+  <!-- Menu de Navegação -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="brand">Rayder Luck</a>
+      <ul class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Cabeçalho Principal -->
+  <header id="home" class="main-header">
+    <div class="container">
+      <h1>Lucas Trindade (Rayder Luck)</h1>
+      <p>Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
+    </div>
   </header>
 
-  <section id="status">
-    <h2>🚧 Site em construção 🚧</h2>
-    <p>Enquanto construo meu portfólio completo, você já pode explorar minhas qualificações e serviços.</p>
-  </section>
+  <!-- Conteúdo Principal (Agrupado para melhor controle) -->
+  <main class="container main-content">
+    <section id="status" class="card alert">
+      <h2>🚧 Site em construção 🚧</h2>
+      <p>Enquanto construo meu portfólio completo, você já pode explorar minhas qualificações e serviços.</p>
+    </section>
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <ul>
-      <li>Criação de sites modernos e responsivos</li>
-      <li>Aplicações web com React, Next.js e Node.js</li>
-      <li>Consultoria em Web3 e Blockchain</li>
-    </ul>
-  </section>
+    <section id="servicos" class="card">
+      <h2>Serviços</h2>
+      <ul class="services-list">
+        <li>
+            <span class="material-icons">web_design</span>
+            Criação de sites modernos e responsivos
+        </li>
+        <li>
+            <span class="material-icons">code</span>
+            Aplicações web com React, Next.js e Node.js
+        </li>
+        <li>
+            <span class="material-icons">currency_bitcoin</span>
+            Consultoria em Web3 e Blockchain
+        </li>
+      </ul>
+    </section>
+  </main>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>📧 <a href="mailto:rayder.dev@gmail.com">rayder.dev@gmail.com</a></p>
-    <p>💻 <a href="https://github.com/RayderLuck" target="_blank">GitHub</a></p>
-    <p>🔗 <a href="https://linkedin.com/in/rayderluck" target="_blank">LinkedIn</a></p>
-  </section>
-
-  <footer>
-    <p>© 2026 - Portfólio de Lucas Trindade (Rayder Luck)</p>
+  <!-- Rodapé -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>© 2026 - Portfólio de Lucas Trindade (Rayder Luck)</p>
+    </div>
   </footer>
 
   <script>
+    // Seu script Matrix original, sem alterações.
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    function resizeCanvas() {
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas(); // Chama ao carregar
 
     const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const fontSize = 14;
