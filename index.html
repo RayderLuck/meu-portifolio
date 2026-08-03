@@ -4,50 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Rayder Luck</title>
-  <!-- Link para os ícones das redes sociais (FontAwesome) -->
+  <!-- Ícones do FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
-  <!-- Cabeçalho e Perfil Central -->
-  <header class="profile-header">
-    <div class="container">
+  <!-- Container Principal -->
+  <main class="wrapper">
+    <header class="profile-header">
       <h1>Lucas Trindade</h1>
-      <p class="subtitle">Rayder Luck</p>
-      <p class="role">Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
+      <p class="subtitle">&lt;Rayder Luck /&gt;</p>
+      <p class="role">DEV FULL SOLO | Tech Leader | Web3 Enthusiast</p>
+    </header>
 
-      <!-- Botões de Contato e Redes Sociais -->
-      <div class="social-buttons">
-        <a href="https://wa.me/55SEUNUMEROQUI" target="_blank" class="btn whatsapp">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://instagram.com/SEU_INSTAGRAM" target="_blank" class="btn instagram">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a href="https://github.com/RayderLuck" target="_blank" class="btn github">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
-        <a href="https://linkedin.com/in/rayderluck" target="_blank" class="btn linkedin">
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="mailto:rayder.dev@gmail.com" class="btn email">
-          <i class="fa-solid fa-envelope"></i> E-mail
-        </a>
-      </div>
+    <!-- Caixa de Links Estilo Dark/Hacker -->
+    <div class="links-box">
+      <h2>// Conecte-se comigo</h2>
+      <ul class="link-list">
+        <li>
+          <a href="https://wa.me/55SEUNUMERO" target="_blank" class="link-item">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/SEU_INSTAGRAM" target="_blank" class="link-item">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/RayderLuck" target="_blank" class="link-item">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/rayderluck" target="_blank" class="link-item">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="mailto:rayder.dev@gmail.com" class="link-item">
+            <i class="fa-solid fa-envelope"></i> E-mail
+          </a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </main>
 
   <!-- Rodapé -->
   <footer class="main-footer">
-    <div class="container">
-      <p>© 2026 - Lucas Trindade (Rayder Luck)</p>
-    </div>
+    <p>© 2026 - Lucas Trindade</p>
   </footer>
 
   <script>
-    // Script Matrix mantido intacto e responsivo
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
