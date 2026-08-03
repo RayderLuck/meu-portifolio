@@ -24,10 +24,10 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza perfeitamente no meio da tela no PC e no celular */
+    justify-content: center;
     align-items: center;
     position: relative;
-    padding: 30px 15px;
+    padding: 40px 15px;
 }
 
 /* --- Fundo Matrix Fixo --- */
@@ -49,6 +49,7 @@ body {
     flex-direction: column;
     align-items: center;
     z-index: 1;
+    margin-bottom: 20px;
 }
 
 /* --- Perfil --- */
@@ -142,11 +143,11 @@ body {
 
 /* --- Rodapé --- */
 .main-footer {
-    position: absolute;
-    bottom: 15px;
+    position: relative;
     font-size: 0.75rem;
     opacity: 0.5;
     z-index: 1;
     letter-spacing: 1px;
     text-align: center;
+    margin-top: 10px;
 }
