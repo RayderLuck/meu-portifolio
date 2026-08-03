@@ -4,78 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Rayder Luck</title>
-  <!-- Adicionei um link para ícones, vamos usar o Google Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Link para os ícones das redes sociais (FontAwesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
-  <!-- Menu de Navegação -->
-  <nav class="navbar">
+  <!-- Cabeçalho e Perfil Central -->
+  <header class="profile-header">
     <div class="container">
-      <a href="#" class="brand">Rayder Luck</a>
-      <ul class="nav-links">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
+      <h1>Lucas Trindade</h1>
+      <p class="subtitle">Rayder Luck</p>
+      <p class="role">Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
 
-  <!-- Cabeçalho Principal -->
-  <header id="home" class="main-header">
-    <div class="container">
-      <h1>Lucas Trindade (Rayder Luck)</h1>
-      <p>Desenvolvedor Fullstack | Tech Leader | Web3 Enthusiast</p>
+      <!-- Botões de Contato e Redes Sociais -->
+      <div class="social-buttons">
+        <a href="https://wa.me/55SEUNUMEROQUI" target="_blank" class="btn whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://instagram.com/SEU_INSTAGRAM" target="_blank" class="btn instagram">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="https://github.com/RayderLuck" target="_blank" class="btn github">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/in/rayderluck" target="_blank" class="btn linkedin">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:rayder.dev@gmail.com" class="btn email">
+          <i class="fa-solid fa-envelope"></i> E-mail
+        </a>
+      </div>
     </div>
   </header>
-
-  <!-- Conteúdo Principal (Agrupado para melhor controle) -->
-  <main class="container main-content">
-    <section id="status" class="card alert">
-      <h2>🚧 Site em construção 🚧</h2>
-      <p>Enquanto construo meu portfólio completo, você já pode explorar minhas qualificações e serviços.</p>
-    </section>
-
-    <section id="servicos" class="card">
-      <h2>Serviços</h2>
-      <ul class="services-list">
-        <li>
-            <span class="material-icons">web_design</span>
-            Criação de sites modernos e responsivos
-        </li>
-        <li>
-            <span class="material-icons">code</span>
-            Aplicações web com React, Next.js e Node.js
-        </li>
-        <li>
-            <span class="material-icons">currency_bitcoin</span>
-            Consultoria em Web3 e Blockchain
-        </li>
-      </ul>
-    </section>
-  </main>
 
   <!-- Rodapé -->
   <footer class="main-footer">
     <div class="container">
-      <p>© 2026 - Portfólio de Lucas Trindade (Rayder Luck)</p>
+      <p>© 2026 - Lucas Trindade (Rayder Luck)</p>
     </div>
   </footer>
 
   <script>
-    // Seu script Matrix original, sem alterações.
+    // Script Matrix mantido intacto e responsivo
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
     function resizeCanvas() {
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
     }
 
     window.addEventListener('resize', resizeCanvas);
-    resizeCanvas(); // Chama ao carregar
+    resizeCanvas();
 
     const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const fontSize = 14;
