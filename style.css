@@ -14,7 +14,7 @@
 
 html, body {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Courier New', Courier, monospace;
@@ -27,7 +27,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 40px 15px;
+    padding: 20px;
 }
 
 /* --- Fundo Matrix Fixo --- */
@@ -41,7 +41,7 @@ body {
     pointer-events: none;
 }
 
-/* --- Wrapper Geral --- */
+/* --- Wrapper Geral (Agrupa Cabeçalho + Caixa de Links) --- */
 .wrapper {
     width: 100%;
     max-width: 440px;
@@ -49,7 +49,6 @@ body {
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-bottom: 20px;
 }
 
 /* --- Perfil --- */
@@ -143,11 +142,11 @@ body {
 
 /* --- Rodapé --- */
 .main-footer {
-    position: relative;
+    position: absolute;
+    bottom: 15px;
     font-size: 0.75rem;
     opacity: 0.5;
     z-index: 1;
     letter-spacing: 1px;
     text-align: center;
-    margin-top: 10px;
 }
